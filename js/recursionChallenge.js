@@ -23,8 +23,19 @@ exports.palindrome = function(word) {
         } return false
 };
 
-exports.bottles = function() {
-
+exports.bottles = function(num, total = 1) {
+        if(num === 1){
+            let atOneBottle = `1 bottle of beer on the wall, 1 bottle of beer.\nTake one down and pass it around, no more bottles of beer on the wall.\nNo more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, ${total} bottles of beer on the wall.`
+            return atOneBottle
+        } else {
+            let minusOne = `${num} bottles of beer on the wall, ${num} bottles of beer.\n`
+            let takeOneDown = `Take one down and pass it around, ${num - 1} bottles of beer on the wall.\n`
+            if(num === 2){
+                takeOneDown = `Take one down and pass it around, 1 bottle of beer on the wall.\n`
+            }
+            return minusOne + takeOneDown + bottleSong(num - 1, total + 1)
+    
+        }
 };
 
 exports.toRoman = (num) => {
